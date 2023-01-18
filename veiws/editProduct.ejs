@@ -1,0 +1,95 @@
+<%- include('partials/header.ejs') %>
+    <div  class="container">
+        <% if(message!="" ){%>
+            <p class="text-center h1 text-danger">
+                <%=message%>
+            </p>
+            <% } %>
+    </div>
+    <div  style="padding-left: 150px;padding-top: 50px;" class="float-end text-center col-md-6">
+        <img width="500px" height="500px" src="/assets/images/<%=product[0].productID%>.jpeg" alt="" srcset="">
+    </div>
+    <form  style="margin-top: 50px;margin-bottom: 100px;" action="" method="POST" enctype="multipart/form-data">
+        <style>
+            .form-row{
+                margin-bottom: 10px;
+            }
+            label{
+                background-color: #eeee;
+            }
+        </style>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="category">Product Category :</label>
+                <select  name="category" id="category" class="form-control" required>
+                    <option value="<%=product[0].catogary%>" selected><%=product[0].catogary%></option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Huawei">Huawei</option>
+                    <option value="Nokia">Nokia</option>
+                    <option value="Sony">Sony</option>
+                    <option value="Motorola">Motorola</option>
+                    <option value="Honor">Honor</option>
+                    <option value="Realme">Realme</option>
+                    <option value="Xiaomi">Xiaomi</option>
+                    <option value="Oppo">Oppo</option>
+                    <option value="Vivo">Vivo</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="title">Product Title :</label>
+                <input value="<%=product[0].title%>" type="text" name="title" class="form-control" id="title" required placeholder="Title">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="description">Product Description :</label>
+                <textarea  cols="10" rows="3" type="text" name="description" class="form-control" id="Description"
+                    required placeholder="description"><%=product[0].description%></textarea>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="quantity">Product Quantity :</label>
+                <input value="<%=product[0].quantity%>" type="number" min="0" name="quantity" class="form-control" id="quantity" required placeholder="Quantity">
+            </div>
+        </div>
+        <div class="form-row">
+            <label for="price">Product Price :</label>
+            <div class="form-group col-md-6">
+                <input value="<%=product[0].price%>"  type="number" min="0" name="price" class="form-control" id="price" required placeholder="Price">
+            </div>
+        </div>
+        <div class="form-row">
+          
+            <div class="form-group col-md-6">
+                <label for="image">Product Image :</label>
+                <input type="file" name="image" id="image" class="form-control" id="image" value="../public/assets/images/0.jpeg" required placeholder="Image">
+            </div>
+            <script>
+                // Get a reference to our file input
+                const fileInput = document.querySelector('input[type="file"]');
+            
+                // Create a new File object
+                const myFile = new File(['Hello World!'],"../public/assets/images/<%=product[0].productID%>.jpeg", {
+                    type: 'text/plain',
+                    lastModified: new Date(),
+                });
+            
+                // Now let's create a DataTransfer to get a FileList
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(myFile);
+                fileInput.files = dataTransfer.files;
+            </script>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary float-end">&nbsp &nbsp &nbsp Edit a Product &nbsp &nbsp &nbsp</button>
+    </div>
+</div>
+    </form>
+    </body>
+
+    </html>

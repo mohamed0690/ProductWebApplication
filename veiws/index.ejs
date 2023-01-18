@@ -1,0 +1,49 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container" style="margin-top: 100px;">
+    <% if(products.length>0){%>
+        <table class="table table-success table-hover table-bordered  align-middle">
+            <thead >
+                
+                <tr>
+                    <th  style="background-color: rgb(78, 87, 104)" class="text-center" scope="col">ID</th>
+                    <th style="background-color: rgb(78, 87, 104)" class="text-center" scope="col">Image</th>
+                    <th style="background-color: rgb(78, 87, 104)" class="text-center"scope="col">Title</th>
+                    <th style="background-color: rgb(78, 87, 104)" class="text-center" scope="col">Category</th>
+                    <th style="background-color: rgb(78, 87, 104)" class="text-center" scope="col">Quantity</th>
+                    <th  style="background-color: rgb(78, 87, 104)" class="text-center"scope="col">Price</th>
+                    <th style="background-color: rgb(78, 87, 104)" class="text-center" scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%products.forEach((product,index)=>{%>
+                    <tr>
+                        <th style="background-color: rgb(78, 87, 104)" class="text-center"scope="row"><%=product.productID%></th>
+                        
+                        <td class="text-center"><img src="assets/images/<%=product.productID%>.jpeg"  style="height: 100px; width: 90px;" alt="" srcset="">
+                            </td>
+                        <td class="text-center"><%=product.title%></td>
+                        <td class="text-center"><%=product.catogary%></td>
+                        <td class="text-center"><%=product.quantity%></td>
+                        <td class="text-center"><%=product.price%></td>
+                        <td class="text-center">
+                            <a href="/edit/<%=product.productID%>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-success">Edit</a>
+                            <a href="/delete/<%=product.productID%>"  rel="noopener noreferrer" class="btn btn-sm btn-danger">Delete</a>
+
+                        </td>
+                    </tr>
+                <%})%>
+            </tbody>
+        </table>
+    <%}
+    else{%>
+        <p class="text-center">
+            No Products found. Click <a href="/add">Here</a>
+            to Add New Product
+
+        </p>
+    <%}%>    
+</div>
+    
+</body>
+</html>
